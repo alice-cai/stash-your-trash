@@ -211,7 +211,12 @@ public class GamePanel extends JPanel {
 	private String generateCode(){
 		String secretCode = "";
 		for(int i = 0; i < SECRET_CODE_LENGTH; i++){
-			secretCode += (char)(48 + Math.random()*43);
+			int randInt = (int)(48 + Math.random()*43);
+			if (randInt >= 65) {
+				secretCode += (char)(randInt);
+			} else {
+				secretCode += randInt%10;
+			}
 		}
 		return secretCode;
 	}
